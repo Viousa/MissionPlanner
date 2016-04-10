@@ -22,6 +22,8 @@ namespace MissionPlanner
 {
     public partial class MainV2 : Form
     {
+       /// public static int a = 0 ;
+
         private static readonly ILog log =
             LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -1670,7 +1672,8 @@ namespace MissionPlanner
 
                     xmlwriter.WriteElementString("comport", comPortName);
 
-                    xmlwriter.WriteElementString("baudrate", _connectionControl.CMB_baudrate.Text);
+                    if (_connectionControl != null)
+                        xmlwriter.WriteElementString("baudrate", _connectionControl.CMB_baudrate.Text);
 
                     xmlwriter.WriteElementString("APMFirmware", MainV2.comPort.MAV.cs.firmware.ToString());
 
